@@ -74,7 +74,6 @@ btnBackAboutThird = ReplyKeyboardMarkup(resize_keyboard=True).add(btnSamoeGlavno
 btnDlyaNovenkihThird = ReplyKeyboardMarkup(resize_keyboard=True).add(btnGoToTest).add(btnStazhirovka).add(btnThisHelpYou).add(btnBackTo).add(btnGoToMain)
 go_to_url = InlineKeyboardMarkup().add(url_button)
 
-print(markup.challenge())
 def btnChallengeYes() :
     btnChallengeYes = InlineKeyboardButton(markup.challenge()['yes'], callback_data=markup.challenge()['yes'])
     return btnChallengeYes

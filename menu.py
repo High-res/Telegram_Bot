@@ -224,24 +224,12 @@ challengeTgID = []
 def getChallengeActionTgId() :
     TgID = actions.getChallengeAction()
     for i in TgID :
-        if markup.challenge()['send_time_1'] and markup.challenge()['send_time_2'] :
-            if markup.hoursToMinutes(markup.HourMinute()) > markup.hoursToMinutes(markup.challenge()['send_time_1']) and markup.hoursToMinutes(markup.HourMinute()) < markup.hoursToMinutes(markup.challenge()['send_time_2']) : 
-                if i['date2'] :
-                    if markup.hoursToMinutes(i['date2']) < markup.hoursToMinutes(markup.challenge()['send_time_2']) :
-                        challengeTgID.append(i['tg_id'])
-        if markup.challenge()['send_time_2'] and markup.challenge()['send_time_3'] :
-            if markup.hoursToMinutes(markup.HourMinute()) > markup.hoursToMinutes(markup.challenge()['send_time_2']) and markup.hoursToMinutes(markup.HourMinute()) < markup.hoursToMinutes(markup.challenge()['send_time_3']) :
-                if i['date2'] :
-                    if markup.hoursToMinutes(i['date2']) < markup.hoursToMinutes(markup.challenge()['send_time_3']) :
-                        challengeTgID.append(i['tg_id'])
-        if markup.challenge()['send_time_3'] :
-            if markup.hoursToMinutes(markup.HourMinute()) > markup.hoursToMinutes(markup.challenge()['send_time_3']) :
-                if i['date2'] :
-                    if markup.hoursToMinutes(i['date2']) > markup.hoursToMinutes(markup.challenge()['send_time_3']) :
-                        challengeTgID.append(i['tg_id'])
+        if markup.challenge()['send_time_1'] :
+            if markup.hoursToMinutes(markup.HourMinute()) > markup.hoursToMinutes(markup.challenge()['send_time_1']) :
+                challengeTgID.append(i['tg_id'])
     return challengeTgID
-            
-print(getChallengeActionTgId())
+
+
 # Challenge answer here!
 @dp.callback_query_handler(lambda c: c.data == markup.challenge()['no'])
 async def answerMessageNo(callback_query: types.CallbackQuery) :

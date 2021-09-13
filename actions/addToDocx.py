@@ -28,7 +28,7 @@ async def addToDocx() :
         if int(all_users[i]['tg_id']) == int(last_req['user_name']) :
             to_avans.append(all_users[i])
 
-    # print(last_req)
+    print(last_req)
 
     year_day, separator, day_time = last_req['date'].partition(' ')
     # print(year_day.split('-')[1])

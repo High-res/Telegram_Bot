@@ -7,7 +7,8 @@ from main import echoChallenge
 print(markup.challenge())
 
 async def botScheduler():
-    aioschedule.every().day.at('17:00').do(echoChallenge)
+    if markup.challenge()['send_time_1'] :
+        aioschedule.every().day.at(markup.challenge()['send_time_1']).do(echoChallenge)
     while True:
         await aioschedule.run_pending()
         time.sleep(1)

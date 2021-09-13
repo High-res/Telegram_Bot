@@ -2,9 +2,10 @@ import actions
 from datetime import datetime
 
 def challenge() :
-    challenge = actions.getChallenge()
-    if challenge :
-        return challenge[-1]
+    if actions.getChallenge() :
+        challenge = actions.getChallenge()
+        if challenge :
+            return challenge[-1]
 
 challengeTgId = []
     
