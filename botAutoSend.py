@@ -1,16 +1,11 @@
 import asyncio
 import aioschedule
 import time
-from aiogram import Bot, types
-from aiogram.dispatcher import Dispatcher
 from datetime import datetime
-from aiogram.utils import executor
-import config
 import actions
 from main import sendToWorkers
 
 
-loop = asyncio.get_event_loop()
 msg_date = []
 msg_date_now = []
 tg_id = []
@@ -21,6 +16,7 @@ def currentDate() :
 
     return current_datetime
 
+print(currentDate())
 def getText():
     get_text = actions.getText()
 
@@ -41,12 +37,13 @@ def getMsgDateNow() :
 async def aioScheduler():
     if currentDate() in getMsgDateNow() :
         await sendToWorkers()
-        return
+        # return
     else :
-        print('Работает каждые 50 секунд')
+        print('Работает каждую 1 минуту')
+        print(currentDate())
     
 async def botScheduler():
-    aioschedule.every(50).seconds.do(aioScheduler)
+    aioschedule.every(1).minutes.do(aioScheduler)
     while True:
         await aioschedule.run_pending()
         time.sleep(1)

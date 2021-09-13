@@ -1,12 +1,6 @@
 import asyncio
 import aioschedule
 import time
-from aiogram import Bot, types
-from aiogram.dispatcher import Dispatcher
-from aiogram.utils import executor
-from datetime import date
-import config
-import actions
 from main import send_birthday
 
 print('Worked birday.py')
