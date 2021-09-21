@@ -18,7 +18,8 @@ def CloackDate() :
 def getDate() :
     today = date.today()
     year = today.strftime('%Y-%m-%d')
-    return year
+    day = today.strftime('%Y-%m')
+    return year, day
 allWorkersID = []
 def AllWorkersTgID() :
     getAllWorkers = actions.getWorkerss()
@@ -92,7 +93,7 @@ async def documentation_handler(message: types.Message) :
 # Локация
 @dp.message_handler(content_types=['location'])
 async def getLocation(message: types.Message) :
-    actions.addLocation(message.from_user.first_name, message.from_user.id, message.location.latitude, message.location.longitude, CloackDate(), getDate())
+    actions.addLocation(message.from_user.first_name, message.from_user.id, message.location.latitude, message.location.longitude, CloackDate(), getDate()[0], getDate()[1])
     print(message)
     await bot.send_message(message.from_user.id, f'https://2gis.kz/almaty?m={message.location.longitude}%2C{message.location.latitude}%2F19.35  \nВы находитесь здесь!')
     
