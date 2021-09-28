@@ -1,7 +1,7 @@
 import asyncio
 import aioschedule
 import time
-from main import send_birthday, get_birthday_name
+from src.echoBot.echoBirthday import get_birthday_name, send_birthday
 
 print('Worked birday.py')
 async def ifSend() :

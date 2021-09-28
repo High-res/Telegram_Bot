@@ -1,14 +1,14 @@
 import aioschedule
 import time
 import asyncio
-import markup
-from main import echoChallenge
+from src.challengeDependency.challengeMarkup import challenge
+from src.echoBot.echoChallenge import echoChallenge
 
-print(markup.challenge())
+print(challenge())
 
 async def botScheduler():
-    if markup.challenge()['send_time_1'] :
-        aioschedule.every().day.at(markup.challenge()['send_time_1']).do(echoChallenge)
+    if challenge()['send_time_1'] :
+        aioschedule.every().day.at(challenge()['send_time_1']).do(echoChallenge)
     while True:
         await aioschedule.run_pending()
         time.sleep(1)

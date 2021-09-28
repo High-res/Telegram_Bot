@@ -2,8 +2,8 @@ import asyncio
 import aioschedule
 import time
 from datetime import datetime
-import actions
-from main import sendToWorkers
+from src.echoBot.echoMessage import sendToWorkers
+from src.actions.getText import getText
 
 
 msg_date = []
@@ -18,7 +18,7 @@ def currentDate() :
 
 print(currentDate())
 def getText():
-    get_text = actions.getText()
+    get_text = getText()
 
     return get_text
 
