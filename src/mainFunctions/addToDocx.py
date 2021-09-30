@@ -24,8 +24,8 @@ async def add_to_docx() :
     year_day, separator, day_time = last_req['date'].partition(' ')
 
 
-    paragraphs[0].add_run('Директору ТОО «UCJ.KZ»  ').bold = True
-    paragraphs[1].add_run('Бибитбеку А.Б.  ').bold = True
+    paragraphs[0].add_run('Директору ТОО «»  ').bold = True
+    paragraphs[1].add_run('.  ').bold = True
     paragraphs[2].add_run(f'От ' +  to_avans[0]['name']).bold = True
     paragraphs[14].add_run(f'              Прошу вас выдать аванс в размере ' + last_req['answer'] + ' тг в счет заработной платы за ' + year_day.split('-')[1] + ' месяц 2021г')
     paragraphs[24].add_run(f'Дата: ' + year_day +'                                                     Подпись _________________')
