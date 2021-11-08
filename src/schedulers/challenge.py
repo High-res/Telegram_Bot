@@ -1,19 +1,15 @@
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 import asyncio
 
 from src.challengeDependency.challengeMarkup import challenge
 from src.echoBot.echoChallenge import echoChallenge
+from src.mainFunctions.currentDate import hour_minute_now, current_date
 
 
-async def challenge_scheduler():
+print(challenge())
+async def botScheduler():
+    print('Challenge')
+    print(current_date())
     if challenge():
-        # aioschedule.every().day.at(challenge()['send_time_1']).do(echoChallenge)
-        while True:
-            await asyncio.sleep(1)
-            # await aioschedule.run_pending()
+        if challenge()['send_time_1'] == hour_minute_now():
             await echoChallenge()
-    else:
-        # aioschedule.every(1).minutes.do(challenge_scheduler)
-        while True:
-            # await aioschedule.run_pending()
-            await asyncio.sleep(60)
-            await challenge_scheduler()
