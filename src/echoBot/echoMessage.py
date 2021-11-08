@@ -16,8 +16,11 @@ def sendText() :
 async def sendToWorkers() :
     if sendText() :
         for i in all_workers_tg_id() :
-            print(i)
-            await send_message(channel_id=i, text = sendText())
+            try:
+                await send_message(channel_id=i, text = sendText())
+                print(i)
+            except Exception as ex:
+                print(ex)
     all_workers_tg_id().clear()
     # else :
     #     print('Не сработало')

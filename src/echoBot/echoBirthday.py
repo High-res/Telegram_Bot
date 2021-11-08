@@ -10,10 +10,10 @@ all_tg_id = []
 
 def birthday() :
     today = date.today()
-    bday = today.strftime('%m-%d')
+    bday = today.strftime('%d-%m')
     return bday
 
-
+print(f'Дата дня рождения '+birthday())
     
 
 def get_birthday_name() :
@@ -30,11 +30,10 @@ def get_birthday_name() :
 
 def get_workers_id() :
         # print(takeWorkers())
-    if get_birthday_name()[2] :
+    if get_birthday_name() :
         name = get_birthday_name()[2]
         for ro in take_workers() :
             if name != ro:
-                print(ro)
                 if ro['tg_id'] != 0 :
                     all_tg_id.append(ro['tg_id'])
         take_workers().clear()
@@ -46,6 +45,11 @@ def get_workers_id() :
 async def send_birthday() :
     if get_birthday_name()[0] :
         for i in get_workers_id() :
-            await send_message(channel_id = i, text = f'Сегодня день рождение у {get_birthday_name()[0]}')
+            try:
+                print(i)
+                await send_message(channel_id = i, text = f'Сегодня день рождение у {get_birthday_name()[0]}')
+            except Exception as ex:
+                print(ex)
+        get_workers_id().clear()
     else :
         print('Not today!')
