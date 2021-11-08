@@ -7,6 +7,10 @@ def current_date() :
 
     return current_datetime
 
+def hour_minute_now():
+    current_datetime = datetime.now().strftime('%H:%M')
+    return current_datetime
+    
 def reg_date() :
     register_date = datetime.now().strftime('%Y-%m-%d')
     return register_date
